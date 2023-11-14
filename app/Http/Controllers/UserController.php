@@ -46,6 +46,12 @@ class UserController extends Controller
         $validatedData['password'] = Hash::make($validatedData['password']);
 
         $query = User::create($validatedData);
+
+        if ($query) {
+            return redirect('/users')->with('message', 'Registrasi berhasil!');
+        } else {
+            return redirect('/users')->with('message', 'Registrasi gagal dilakukan!');
+        }
     }
 
     /**
