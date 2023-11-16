@@ -23,9 +23,13 @@ use App\Http\Controllers\PengaduanController;
 
 
 Route::middleware('guest')->group(function () {
-  Route::get('/', function () {
-    return view('guest.index');
-  });
+  // Route::get('/', function () {
+  //   return view('guest.index');
+  // });
+
+  // Mengarahkan langsung ke halaman login
+  Route::redirect('/', '/auth/login');
+
   Route::get('/auth/login', [AuthController::class, 'login_page'])->name('login');
   Route::post('/auth/login', [AuthController::class, 'login']);
 });
